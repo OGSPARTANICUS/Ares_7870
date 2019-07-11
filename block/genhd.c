@@ -644,7 +644,8 @@ void add_disk(struct gendisk *disk)
 	WARN_ON(retval);
 
 	/*
-	 * Limit default readahead size for small devices.
+	 * readahead size for various devices.
+	 *
 	 *        disk size    readahead size
 	 *               1M                8k
 	 *               4M               16k
@@ -660,7 +661,7 @@ void add_disk(struct gendisk *disk)
 	if (get_capacity(disk)) {
 		unsigned long size = get_capacity(disk) >> 9;
 		size = 1UL << (ilog2(size) / 2);
-		bdi->ra_pages = min(bdi->ra_pages, size);
+		bdi->ra_pages = max(bdi->ra_pages, size);
 	}
 
 	disk_add_events(disk);
