@@ -642,14 +642,6 @@ config ASMP
 	  Automatically hotplugs the multiple cpu cores on and off
 	  based on cpu load and suspend state
 
-config AIO_HOTPLUG
-	bool "All in One HotPlug"
-	depends on SMP && HOTPLUG_CPU
-	default n
-	help
-	  an All in One HotPlug for Traditional Quad-Core SoCs and 
-	  Hexa/Octa-Core big.LITTLE SoCs.
-
 source kernel/Kconfig.preempt
 
 source kernel/Kconfig.hz
