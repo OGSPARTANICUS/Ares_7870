@@ -275,7 +275,7 @@ static int __ref asmp_start(void)
 	}
 
 	INIT_DELAYED_WORK(&asmp_work, asmp_work_fn);
-	queue_delayed_work(asmp_workq, &asmp_work,
+	queue_delayed_work_on(0, asmp_workq, &asmp_work,
 			msecs_to_jiffies(asmp_param.delay));
 
 	asmp_nb.notifier_call = asmp_notifier_cb;
