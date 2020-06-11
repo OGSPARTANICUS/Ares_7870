@@ -225,7 +225,7 @@ static void __ref asmp_resume(void)
 	}
 
 	/* rescheduled queue atleast on 3 seconds */
-	queue_delayed_work(asmp_workq, &asmp_work,
+	queue_delayed_work_on(0, asmp_workq, &asmp_work,
 				msecs_to_jiffies(3000));
 }
 
