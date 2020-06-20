@@ -404,6 +404,9 @@ LINUXINCLUDE    := \
 KBUILD_CLFAGS += -floop-nest-optimize -fgraphite-identity -ftree-loop-distribution
 KBUILD_CPPFLAGS := -O3 -g0 -pipe -D__KERNEL__
 KBUILD_CFLAGS   := -O3 -g0 -pipe -fno-strict-aliasing -fno-common -w -std=gnu89
+AARCH64_CFLAGS	:= -march=armv8.1-a+fp+simd+crypto+crc -mtune=cortex-a53
+KBUILD_CFLAGS_KERNEL += $(AARCH64_CFLAGS)
+KBUILD_CFLAGS_MODULE += $(AARCH64_CFLAGS)
 KBUILD_AFLAGS_KERNEL :=
 KBUILD_CFLAGS_KERNEL :=
 KBUILD_AFLAGS   := -D__ASSEMBLY__
