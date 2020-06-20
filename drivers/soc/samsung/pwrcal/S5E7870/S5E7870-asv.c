@@ -718,7 +718,7 @@ static int dvfsg3d_get_asv_table(unsigned int *table)
 	Define Needed Voltages manually */
 	table[0] = 1262500; // 1300MHz
 	table[1] = 1162500; // 1246MHz
-	table[2] = 1032000; // 1146MHz
+	table[2] = 1200000; // 1146MHz
 	table[3] = 931200;  // 1001MHz
 	table[4] = 837500;  // 845MHz
 	table[5] = 662500;  // 728MHz
