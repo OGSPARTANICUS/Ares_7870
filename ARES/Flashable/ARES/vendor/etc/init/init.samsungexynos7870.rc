@@ -2,8 +2,6 @@ on early-init
     mkdir /mnt/vendor/efs 0771 radio system
     mount debugfs /sys/kernel/debug /sys/kernel/debug
 
-# AresKernel
-
 on init
     start watchdogd
 
@@ -24,18 +22,6 @@ on post-fs
     setrlimit 8 67108864 67108864
 
 on post-fs-data
-    write /sys/devices/system/cpu/cpu0/online 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor performance
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1794000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 343000
-    write /sys/devices/system/cpu/cpu4/online 1
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor performance
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1794000
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 343000
-    write /sys/module/autosmp/parameters/enabled "Y"
-    write /sys/kernel/autosmp/conf/max_cpus_bc "4"
-    write /sys/kernel/autosmp/conf/max_cpus_lc "4"
-    write /sys/kernel/autosmp/conf/min_cpus_bc "1"
 # OLAF setup cgroup freezer
     mkdir /dev/freezer
     mount cgroup none /dev/freezer freezer
@@ -103,16 +89,6 @@ on boot
     # to improve allocation times
 #    write /proc/sys/vm/min_free_kbytes 32768
 #    write /proc/sys/vm/min_free_order_shift 1
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor "interactive"
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq 1794000
-    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_min_freq 343000
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor "interactive"
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_max_freq 1794000
-    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_min_freq 343000
-    write /sys/module/autosmp/parameters/enabled "Y"
-    write /sys/kernel/autosmp/conf/max_cpus_bc "4"
-    write /sys/kernel/autosmp/conf/max_cpus_lc "4"
-    write /sys/kernel/autosmp/conf/min_cpus_bc "1"
 
 # SSWAP
     write /proc/sys/vm/swappiness 145
@@ -172,18 +148,13 @@ on boot
     chown radio system /sys/module/cpuidle/parameters/off
     chmod 0664 /sys/module/cpuidle/parameters/off
 
-    # DVFS nodes
-    chmod 000 /sys/devices/11400000.mali/dvfs
+    # GPU dvfs node
     chown radio system /sys/devices/11400000.mali/dvfs_table
-    chmod 000 /sys/devices/11400000.mali/dvfs_table
+    chmod 0664 /sys/devices/11400000.mali/dvfs_table
     chown radio system /sys/devices/11400000.mali/dvfs_min_lock
-    chmod 000 /sys/devices/11400000.mali/dvfs_min_lock
+    chmod 0664 /sys/devices/11400000.mali/dvfs_min_lock
     chown radio system /sys/devices/11400000.mali/dvfs_max_lock
-    chmod 000 /sys/devices/11400000.mali/dvfs_max_lock
-    chown system radio /sys/power/cpufreq_min_limit
-    chmod 000 /sys/power/cpufreq_min_limit
-    chown system radio /sys/power/cpufreq_max_limit
-    chmod 000 /sys/power/cpufreq_max_limit
+    chmod 0664 /sys/devices/11400000.mali/dvfs_max_lock
 
     # mif, int
     chown radio system /sys/class/devfreq/17000010.devfreq_mif/min_freq
