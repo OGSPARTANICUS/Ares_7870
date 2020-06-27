@@ -2,6 +2,7 @@
 #
 # AresKernel
 #
+# CONFIG_AUDIT is not set
 CONFIG_STORE_MODE=y
 CONFIG_ASMP=y
 CONFIG_STATE_NOTIFIER=y
