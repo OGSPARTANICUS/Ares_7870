@@ -2,6 +2,7 @@
 #
 # AresKernel
 #
+CONFIG_IP_NF_TARGET_TTL=y
 # CONFIG_AUDIT is not set
 CONFIG_STORE_MODE=y
 CONFIG_ASMP=y
