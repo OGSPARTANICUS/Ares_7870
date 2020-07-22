@@ -236,7 +236,7 @@ on boot
 	
 	#Setting Governor Parameters
     write /sys/devices/battery/ac_charge 1550
-    write /sys/module/autosmp/parameters/enabled N
+    write /sys/module/autosmp/parameters/enabled Y
     write /sys/kernel/autosmp/conf/max_cpus_bc 4
     write /sys/kernel/autosmp/conf/max_cpus_lc 4
     write /sys/kernel/autosmp/conf/min_cpus_bc 1
