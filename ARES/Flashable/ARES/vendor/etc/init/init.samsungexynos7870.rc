@@ -235,7 +235,7 @@ on boot
     chmod 0660 /sys/devices/system/cpu/cpu4/cpufreq/interactive/io_is_busy
 	
 	#Setting Governor Parameters
-    write /sys/devices/battery/ac_charge 1550
+    write /sys/devices/battery/ac_charge 2050
     write /sys/module/autosmp/parameters/enabled N
     write /sys/kernel/autosmp/conf/max_cpus_bc 4
     write /sys/kernel/autosmp/conf/max_cpus_lc 4
