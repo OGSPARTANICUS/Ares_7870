@@ -219,20 +219,6 @@ config CPU_FREQ_GOV_INTERACTIVE
 
 	  If in doubt, say N.
 
-config CPU_INDEX_QOS_CLUSTER0
-	depends on CPU_FREQ_GOV_INTERACTIVE
-	int "CPU index of cluster0 for QoS Handler"
-	default 0
-	help
-	  this value indicate CPU index of QoS Handler for Cluster0
-
-config CPU_INDEX_QOS_CLUSTER1
-	depends on CPU_FREQ_GOV_INTERACTIVE
-	int "CPU index of cluster1 for QoS Handler"
-	default 4
-	help
-	  this value indicate CPU index of QoS Handler for Cluster1
-
 config CPU_FREQ_GOV_CONSERVATIVE
 	tristate "'conservative' cpufreq governor"
 	depends on CPU_FREQ
