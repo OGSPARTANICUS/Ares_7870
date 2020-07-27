@@ -1007,3 +1007,9 @@ service gpsd /vendor/bin/hw/gpsd -c /vendor/etc/gnss/gps.cfg
     group system inet net_raw wakelock
     ioprio be 0
     seclabel u:r:gpsd:s0
+
+# faced
+service faced /system/bin/faced
+    class late_start
+    user system
+    group system
